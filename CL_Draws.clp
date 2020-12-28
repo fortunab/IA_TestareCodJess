@@ -1,23 +1,4 @@
-(deftemplate UEFAChampionsLeagueGroupStageDraw (slot team)(slot country)(slot pot)(slot group))
-
-(assert (UEFAChampionsLeagueGroupStageDraw (team "Bayern Munich")(country Germany)(pot 1)(group nil)))
-(assert (UEFAChampionsLeagueGroupStageDraw (team Liverpool)(country England)(pot 1)(group nil)))
-(assert (UEFAChampionsLeagueGroupStageDraw (team Juventus)(country Italy)(pot 1)(group nil)))
-(assert (UEFAChampionsLeagueGroupStageDraw (team Porto)(country Portugal)(pot 1)(group nil)))
-(assert (UEFAChampionsLeagueGroupStageDraw (team Barcelona)(country Spain)(pot 2)(group nil)))
-(assert (UEFAChampionsLeagueGroupStageDraw (team "Manchester United")(country England)(pot 2)(group nil)))
-(assert (UEFAChampionsLeagueGroupStageDraw (team "Borussia Dortmund")(country Germany)(pot 2)(group nil)))
-(assert (UEFAChampionsLeagueGroupStageDraw (team Chelsea)(country England)(pot 2)(group nil)))
-(assert (UEFAChampionsLeagueGroupStageDraw (team Ajax)(country Netherlands)(pot 3)(group nil)))
-(assert (UEFAChampionsLeagueGroupStageDraw (team "Inter Milan")(country Italy)(pot 3)(group nil)))
-(assert (UEFAChampionsLeagueGroupStageDraw (team Olympiacos)(country Greece)(pot 3)(group nil)))
-(assert (UEFAChampionsLeagueGroupStageDraw (team Krasnodar)(country Russia)(pot 3)(group nil)))
-(assert (UEFAChampionsLeagueGroupStageDraw (team "Lokomotiv Moscow")(country Russia)(pot 4)(group nil)))
-(assert (UEFAChampionsLeagueGroupStageDraw (team "Borussia Moenchengladbach")(country Germany)(pot 4)(group nil)))
-(assert (UEFAChampionsLeagueGroupStageDraw (team "Istanbul Basaksehir")(country Turkey)(pot 4)(group nil)))
-(assert (UEFAChampionsLeagueGroupStageDraw (team Rennes)(country France)(pot 4)(group nil)))
-
-(assert  (group A)(group B)(group C)(group D))
+(batch teams.clp)
 
 (defrule display_data
     (declare(salience 110))
@@ -141,6 +122,7 @@
     (printout t "D -> " ?t crlf)
 )
 
+(agenda)
 (facts)
 (run)
 
