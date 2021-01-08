@@ -25,6 +25,7 @@ class GraphicInterface:
         self.executeButton.config(state="active")
 
     def chooseAlgorithm(self, algName):
+        self.convertFile()
         GraphGenerator(Toplevel(self.root), self.filePath, algName)
 
     def createInterface(self):
@@ -40,7 +41,8 @@ class GraphicInterface:
                                                pady=5,
                                                padx=5
                                                )
-        self.executeButton = Button(self.root, text="Create groups!", command=lambda: self.chooseAlgorithm(self.algorithm))
+        self.executeButton = Button(self.root, text="Create groups!",
+                                    command=lambda: self.chooseAlgorithm(self.algorithm))
         self.executeButton.grid(row=2, column=0, sticky=tk.W + tk.E)
         self.executeButton.config(state="disabled")
         self.display = tk.StringVar()
@@ -55,3 +57,38 @@ class GraphicInterface:
 
         self.algoDropDown = OptionMenu(self.root, self.algorithm, *self.algoNames)
         self.algoDropDown.grid(row=1, column=1, sticky=tk.W + tk.E, padx=5)
+
+    def convertFile(self):
+        fisier = self.filePath
+        f = open(fisier, 'r')
+        lfile = f.read().split('\n')
+        ln1 = []
+        for i in lfile:
+            ln1.append(i.split(" "))
+        teams = []
+        for echipe in ln1:
+            for i in range(len(echipe)):
+                if i == 2:
+                    teams.append(echipe[i][:-1])
+        cod = []
+        for echipe in ln1:
+            for i in range(len(echipe)):
+                if i == 8:
+                    cod.append(echipe[i][:-1])
+        tara = []
+        for echipe in ln1:
+            for i in range(len(echipe)):
+                if i == 4:
+                    tara.append(echipe[i][:-1])
+        palarie = []
+        for echipe in ln1:
+            for i in range(len(echipe)):
+                if i == 6:
+                    palarie.append(echipe[i][:-1])
+        string = ""
+        for i in range(len(teams)):
+            string += teams[i] + " " + cod[i] + " " + tara[i] + " " + palarie[i] + '\n'
+        g = open("Graph.txt", "w")
+        self.filePath = "Graph.txt"
+        g.write(string)
+        g.close()
